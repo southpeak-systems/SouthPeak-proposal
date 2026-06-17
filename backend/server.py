@@ -28,33 +28,38 @@ class IntakeRequest(BaseModel):
 
 @app.post("/intake")
 async def run_intake(req: IntakeRequest, background_tasks: BackgroundTasks):
-    # Save raw intake to Supabase immediately — fast, synchronous
-    intake = process_intake(req.raw_input)
-
-    # Immediately persist form fields — don't wait for background pipeline
-    supabase.table("client_intakes").update({
-        "client_email": req.client_email,
-        "business_name": req.business_name or intake.get("business_name"),
-    }).eq("id", intake["id"]).execute()
-    # Also keep in-memory intake dict consistent for background task
-    if req.business_name:
-        intake["business_name"] = req.business_name
-
-    # Kick off the rest of the pipeline in the background
+    # Return immediately — entire pipeline runs in background
     background_tasks.add_task(
         _run_pipeline,
-        intake=intake,
+        raw_input=req.raw_input,
         client_email=req.client_email,
         business_name=req.business_name,
     )
-
     return JSONResponse({"success": True})
 
 
-def _run_pipeline(intake: dict, client_email: str, business_name: str):
+def _run_pipeline(raw_input: str, client_email: str, business_name: str):
     from agent.hermes import classify_project
     from agent.sheets import write_to_sheets
     from proposal import generate_proposal
+
+    try:
+        intake = process_intake(raw_input)
+    except Exception:
+        print("[pipeline] ERROR in intake analysis:")
+        traceback.print_exc()
+        return
+
+    try:
+        supabase.table("client_intakes").update({
+            "client_email": client_email,
+            "business_name": business_name or intake.get("business_name"),
+        }).eq("id", intake["id"]).execute()
+        if business_name:
+            intake["business_name"] = business_name
+    except Exception:
+        print("[pipeline] ERROR persisting form fields to Supabase:")
+        traceback.print_exc()
 
     try:
         classification = classify_project(intake)
