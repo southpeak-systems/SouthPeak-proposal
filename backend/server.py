@@ -135,7 +135,7 @@ Review and edit the proposal draft here:
 {doc_url}
 
 Once approved, run:
-  cd ~/southpeak-systems/backend && .venv/bin/python approve_proposal.py --intake-id {intake_id}
+  cd ~/southpeak-proposal-generator/backend && .venv/bin/python approve_proposal.py --intake-id {intake_id}
 """
 
     composio.tools.execute(
