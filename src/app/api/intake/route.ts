@@ -4,7 +4,7 @@ export const maxDuration = 60; // seconds — upgrade to 300 on Pro if needed
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { business_name, client_email, budget_range, urgency, description } = body;
+  const { business_name, client_email, industry, budget_range, urgency, description } = body;
 
   if (!description || !client_email || !business_name) {
     return NextResponse.json(
@@ -20,6 +20,7 @@ export async function POST(req: NextRequest) {
 
   const raw_input = [
     `Business: ${business_name}`,
+    industry ? `Industry: ${industry}` : null,
     budget_range ? `Budget: ${budget_range}` : null,
     urgency ? `Timeline: ${urgency}` : null,
     ``,

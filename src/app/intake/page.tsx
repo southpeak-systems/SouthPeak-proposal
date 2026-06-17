@@ -17,6 +17,7 @@ export default function IntakePage() {
     const data = {
       business_name: (form.elements.namedItem("business_name") as HTMLInputElement).value.trim(),
       client_email: (form.elements.namedItem("client_email") as HTMLInputElement).value.trim(),
+      industry: (form.elements.namedItem("industry") as HTMLInputElement).value.trim(),
       budget_range: (form.elements.namedItem("budget_range") as HTMLSelectElement).value,
       urgency: (form.elements.namedItem("urgency") as HTMLSelectElement).value,
       description: (form.elements.namedItem("description") as HTMLTextAreaElement).value.trim(),
@@ -61,9 +62,9 @@ export default function IntakePage() {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6" style={{colorScheme: "light"}}>
       <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-10 max-w-xl w-full text-gray-900">
         <div className="mb-8">
-          <h1 className="text-2xl font-semibold text-gray-900">Tell us about your project</h1>
+          <h1 className="text-2xl font-semibold text-gray-900">Get a custom AI automation proposal</h1>
           <p className="text-gray-500 text-sm mt-1">
-            Fill this out and we'll prepare a custom proposal for your review.
+            Tell us what's slowing your team down. We'll send you a custom proposal with pricing — no sales call required.
           </p>
         </div>
 
@@ -93,6 +94,18 @@ export default function IntakePage() {
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
               />
             </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Industry / type of business
+            </label>
+            <input
+              name="industry"
+              type="text"
+              placeholder="e.g. HVAC, real estate, e-commerce"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
+            />
           </div>
 
           <div>
@@ -141,6 +154,8 @@ export default function IntakePage() {
               {error}
             </p>
           )}
+
+          <p className="text-xs text-gray-400 text-center">You'll hear back within 24 hours.</p>
 
           <button
             type="submit"
