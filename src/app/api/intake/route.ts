@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const maxDuration = 60; // seconds — upgrade to 300 on Pro if needed
+
 export async function POST(req: NextRequest) {
   const body = await req.json();
   const { business_name, client_email, budget_range, urgency, description } = body;
