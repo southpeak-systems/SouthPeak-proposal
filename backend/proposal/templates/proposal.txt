@@ -1,0 +1,67 @@
+You are writing a professional service proposal on behalf of SouthPeak Systems LLC, an AI automation and software consultancy.
+
+Write a complete, client-ready proposal for the following prospect. Use a warm but professional tone. Be specific — reference their actual pain points and business context. Do not use generic filler.
+
+IMPORTANT FORMATTING RULES:
+- Do NOT include a "PROPOSAL HEADER" section or any header block — the PDF already renders the title, business name, and date automatically
+- Do NOT include any "---" divider lines anywhere in your output
+- Write all dollar amounts as formatted currency (e.g. "$6,000" not "6,000 dollars" or "6000")
+- Do NOT mention specific cities, locations, or regions in the closing or signature
+- Do NOT include a website link or email address in the closing signature — use only the name and company
+- For timeline, use week-based phrasing (e.g. "Week 1", "Week 2-3") — do NOT say "within about a month" or similar vague language
+- When the client expresses urgency, reflect that in the timeline framing (e.g. "we can move quickly")
+
+---
+
+CLIENT INFORMATION:
+- Business: {{ business_name }}
+- Industry: {{ industry }}
+- Pain points: {{ pain_points }}
+- Summary: {{ summary }}
+
+PROJECT CLASSIFICATION:
+- Project type: {{ project_type }}
+- Tier: {{ tier }}
+- Price: {{ price_output }}{% if estimated_hours %} ({{ estimated_hours }}){% endif %}
+{% if scope_review_note %}- Note: {{ scope_review_note }}{% endif %}
+{% if retainer_applies %}- Retainer: {{ retainer_price }}/month for ongoing maintenance{% endif %}
+
+---
+
+Write the proposal with these exact sections:
+
+EXECUTIVE SUMMARY
+2-3 sentences. What SouthPeak will build and the core business outcome for the client.
+
+THE CHALLENGE
+Restate their pain points in business terms — time lost, costs, missed opportunities. Be specific to their situation.
+
+OUR PROPOSED SOLUTION
+Describe the system we will build based ONLY on what the client described. Do not invent integrations, features, or technical components the client did not mention. Describe the solution in terms of outcomes (time saved, problems eliminated) and high-level capabilities. If specific tooling or integrations are needed, note that these will be confirmed during discovery.
+
+WHAT YOU GET
+Bullet list of 4-6 deliverables grounded in what the client actually described. Do not promise specific integrations (calendar systems, CRMs, job management platforms) unless the client named them. Use outcome-focused language: what stops happening, what starts happening, what the team gets back.
+
+For follow-up email triggers: use time-based framing only (e.g. "follow-up emails sent automatically X days after an appointment") unless the client explicitly described a job management system or status workflow. Do NOT use phrases like "triggered by job status" or "triggered by job completion" — these imply a specific integration that has not been scoped. If job-status automation is relevant, flag it as something to explore on the discovery call.
+
+INVESTMENT
+Present the pricing clearly:
+- If starter or standard: state the single fixed price (formatted as "$X,XXX") and what it covers
+- If premium: state the price range and note that final pricing is confirmed after a scope review call
+- If hourly: state the hour estimate, rate ($50/hr), and total range
+- If retainer applies: list it separately as an optional monthly add-on after the build
+- Always include this clarifying sentence after the price: "This is a one-time project fee — not a monthly cost. It covers everything from initial setup through launch."
+
+TIMELINE
+Provide a week-based timeline (Week 1: Discovery and Setup, Week 2-3: Build, Week 4: Testing and Launch). If the client expressed urgency, open with a sentence like "We can move quickly on this." Do not use vague duration language.
+
+NEXT STEPS
+3 numbered steps. End with a clear call to action to schedule a discovery call or reply to confirm.
+
+CLOSING
+A short, human sign-off. End with:
+
+Brice Gordon
+SouthPeak Systems LLC
+bgordon@southpeak-systems.com
+southpeak-systems.com
