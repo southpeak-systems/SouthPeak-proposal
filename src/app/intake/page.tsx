@@ -62,6 +62,15 @@ export default function IntakePage() {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6" style={{colorScheme: "light"}}>
       <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-10 max-w-xl w-full text-gray-900">
         <div className="mb-8">
+          <a
+            href="https://southpeak-systems.com"
+            className="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-600 mb-6"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to SouthPeak Systems
+          </a>
           <h1 className="text-2xl font-semibold text-gray-900">Get a custom AI automation proposal</h1>
           <p className="text-gray-500 text-sm mt-1">
             Tell us what's slowing your team down. We'll send you a custom proposal with pricing — no sales call required.
